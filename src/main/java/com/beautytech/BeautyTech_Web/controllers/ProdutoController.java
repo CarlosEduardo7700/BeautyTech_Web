@@ -30,4 +30,10 @@ public class ProdutoController {
         model.addAttribute("mensagem", "Produto cadastrado!");
         return "produto/form-cadastrar";
     }
+
+    @GetMapping
+    public String exibirProdutos(Model model) {
+        model.addAttribute("produtos", produtoRepository.findAll());
+        return "produto/list-produtos";
+    }
 }

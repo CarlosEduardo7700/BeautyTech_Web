@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Seu estoque</title>
+</head>
+<body>
+
+    <h1>Seu estoque</h1>
+
+    <table>
+
+        <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Data de Fabricação</th>
+            <th>Data de Validade</th>
+            <th>Quantidade em Estoque</th>
+            <th>Quantidade Mínima</th>
+            <th>Quantidade Máxima</th>
+        </tr>
+        <tr th:each="prod:${produtos}">
+            <td th:text="${prod.nome}"></td>
+            <td th:text="${prod.preco}"></td>
+            <td th:text="${#temporals.format(prod.dataDeFabricacao, 'dd/MM/yyyy')}"></td>
+            <td th:text="${#temporals.format(prod.validade, 'dd/MM/yyyy')}"></td>
+            <td th:text="${prod.quantidadeEmEstoque}"></td>
+            <td th:text="${prod.quantidadeMinimaParaEstoque}"></td>
+            <td th:text="${prod.quantidadeMaximaParaEstoque}"></td>
+        </tr>
+
+    </table>
+
+</body>
+</html>
