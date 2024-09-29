@@ -2,6 +2,7 @@
 <html lang="pt-br"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>Seu estoque</title>
 </head>
@@ -28,6 +29,10 @@
             <td th:text="${prod.quantidadeEmEstoque}"></td>
             <td th:text="${prod.quantidadeMinimaParaEstoque}"></td>
             <td th:text="${prod.quantidadeMaximaParaEstoque}"></td>
+            <th>
+                <a th:href="@{/produto/editar/}+${prod.id}"
+                   class="btn btn-primary">Editar</a>
+            </th>
         </tr>
 
     </table>
