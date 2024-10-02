@@ -52,5 +52,13 @@ public class ProdutoController {
         return "redirect:/produto";
     }
 
+    @PostMapping("deletar")
+    @Transactional
+    public String deletarProduto(Long id, RedirectAttributes redirectAttributes) {
+        produtoRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("mensagem", "Produto Deletado!");
+        return "redirect:/produto";
+    }
+
 
 }
