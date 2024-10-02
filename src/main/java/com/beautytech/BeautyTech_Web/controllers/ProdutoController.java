@@ -36,7 +36,7 @@ public class ProdutoController {
     public String cadastrarProduto(Produto produto, Model model) {
         produtoRepository.save(produto);
         model.addAttribute("mensagem", "Produto cadastrado!");
-        return "produto/form-cadastrar";
+        return "redirect:/produto/cadastrar";
     }
 
     @GetMapping("editar/{id}")

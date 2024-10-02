@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
-    <meta charset="UTF-8">
-    <title>BeuatyTech | Home</title>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Home</title>
 </head>
 <body>
 
-    <h1 class="text-dark">Sistema de Gerenciamento de Produtos da BeautyTech</h1>
+    <div layout:fragment="conteudo">
+        <h1 class="text-dark">Sistema de Gerenciamento de Produtos da BeautyTech</h1>
+    </div>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>

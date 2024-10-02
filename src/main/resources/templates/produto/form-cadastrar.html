@@ -1,61 +1,71 @@
 <!DOCTYPE html>
 <html lang="pt-br"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
 <head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>Cadastro de Produtos</title>
 </head>
 <body>
 
-  <h1>Formulário para Cadastro de Produtos</h1>
+  <div layout:fragment="conteudo">
 
-  <form th:action="@{/produto/cadastrar}" th:object="${produto}" method="post">
+    <h1>Formulário para Cadastro de Produtos</h1>
 
-    <div>
-      <label>Nome do Produto</label>
-      <input type="text" th:field="*{nome}" id="nome" placeholder="Informe o nome do produto..."/>
-    </div>
+    <form th:action="@{/produto/cadastrar}" th:object="${produto}" method="post">
 
-    <div>
-      <label>Descrição do Produto</label>
-      <input type="text" th:field="*{descricao}" id="descricao" placeholder="Informe uma descrição do produto..."/>
-    </div>
+      <div>
+        <label>Nome do Produto</label>
+        <input type="text" th:field="*{nome}" id="nome" placeholder="Informe o nome do produto..."/>
+      </div>
 
-    <div>
-      <label>Preço do Produto</label>
-      <input type="text" th:field="*{preco}" id="preco" placeholder="Informe o preço do produto..."/>
-    </div>
+      <div>
+        <label>Descrição do Produto</label>
+        <input type="text" th:field="*{descricao}" id="descricao" placeholder="Informe uma descrição do produto..."/>
+      </div>
 
-    <div>
-      <label>Data de Fabricação</label>
-      <input type="date" th:field="*{dataDeFabricacao}" id="dataDeFabricacao" placeholder="Informe a data de fabricação do produto..."/>
-    </div>
+      <div>
+        <label>Preço do Produto</label>
+        <input type="text" th:field="*{preco}" id="preco" placeholder="Informe o preço do produto..."/>
+      </div>
 
-    <div>
-      <label>Data de Validade</label>
-      <input type="date" th:field="*{validade}" id="validade" placeholder="Informe a data de validade do produto..."/>
-    </div>
+      <div>
+        <label>Data de Fabricação</label>
+        <input type="date" th:field="*{dataDeFabricacao}" id="dataDeFabricacao" placeholder="Informe a data de fabricação do produto..."/>
+      </div>
 
-    <div>
-      <label>Quantidade em Estoque</label>
-      <input type="number" th:field="*{quantidadeEmEstoque}" id="quantidadeEmEstoque" placeholder="Informe a quantidade em estoque do produto..."/>
-    </div>
+      <div>
+        <label>Data de Validade</label>
+        <input type="date" th:field="*{validade}" id="validade" placeholder="Informe a data de validade do produto..."/>
+      </div>
 
-    <div>
-      <label>Quantidade Mínima em Estoque</label>
-      <input type="number" th:field="*{quantidadeMinimaParaEstoque}" id="quantidadeMinEstoque" placeholder="Informe a quantidade mínima para estoque do produto..."/>
-    </div>
+      <div>
+        <label>Quantidade em Estoque</label>
+        <input type="number" th:field="*{quantidadeEmEstoque}" id="quantidadeEmEstoque" placeholder="Informe a quantidade em estoque do produto..."/>
+      </div>
 
-    <div>
-      <label>Quantidade Máxima em Estoque</label>
-      <input type="number" th:field="*{quantidadeMaximaParaEstoque}" id="quantidadeMaxEstoque" placeholder="Informe a quantidade máxima para estoque do produto..."/>
-    </div>
+      <div>
+        <label>Quantidade Mínima em Estoque</label>
+        <input type="number" th:field="*{quantidadeMinimaParaEstoque}" id="quantidadeMinEstoque" placeholder="Informe a quantidade mínima para estoque do produto..."/>
+      </div>
 
-    <button type="submit">Cadastrar</button>
+      <div>
+        <label>Quantidade Máxima em Estoque</label>
+        <input type="number" th:field="*{quantidadeMaximaParaEstoque}" id="quantidadeMaxEstoque" placeholder="Informe a quantidade máxima para estoque do produto..."/>
+      </div>
 
-    <p th:text="${mensagem}"></p>
+      <button type="submit">Cadastrar</button>
 
-  </form>
+      <p th:text="${mensagem}"></p>
+
+    </form>
+
+  </div>
+
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
 
 </body>
