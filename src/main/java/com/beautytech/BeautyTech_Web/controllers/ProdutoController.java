@@ -33,9 +33,9 @@ public class ProdutoController {
 
     @PostMapping("cadastrar")
     @Transactional
-    public String cadastrarProduto(Produto produto, Model model) {
+    public String cadastrarProduto(Produto produto, RedirectAttributes redirectAttributes) {
         produtoRepository.save(produto);
-        model.addAttribute("mensagem", "Produto cadastrado!");
+        redirectAttributes.addFlashAttribute("mensagem", "Produto cadastrado!");
         return "redirect:/produto/cadastrar";
     }
 

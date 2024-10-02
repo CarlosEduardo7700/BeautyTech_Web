@@ -11,55 +11,60 @@
 <body>
   <div layout:fragment="conteudo">
 
-    <h1>Formulário de Edição do Produto</h1>
+    <h1 class="mt-3 mb-5">Formulário de Edição do Produto</h1>
+
     <form th:action="@{/produto/editar}" th:object="${produto}" method="post">
 
       <input th:field="*{id}" type="hidden">
       <input th:field="*{dataDeCadastro}" type="hidden">
 
-      <div>
-        <label>Nome do Produto</label>
-        <input type="text" th:field="*{nome}" id="nome" placeholder="Informe o nome do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Nome do Produto</label>
+        <input class="form-control" type="text" th:field="*{nome}" id="nome" placeholder="Informe o nome do produto..."/>
       </div>
 
-      <div>
-        <label>Descrição do Produto</label>
-        <input type="text" th:field="*{descricao}" id="descricao" placeholder="Informe uma descrição do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Descrição do Produto</label>
+        <input class="form-control" type="text" th:field="*{descricao}" id="descricao" placeholder="Informe uma descrição do produto..."/>
       </div>
 
-      <div>
-        <label>Preço do Produto</label>
-        <input type="text" th:field="*{preco}" id="preco" placeholder="Informe o preço do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Preço do Produto</label>
+        <input class="form-control" type="text" th:field="*{preco}" id="preco" placeholder="Informe o preço do produto..."/>
       </div>
 
-      <div>
-        <label>Data de Fabricação</label>
-        <input type="text" th:field="*{dataDeFabricacao}" id="dataDeFabricacao" placeholder="Informe a data de fabricação do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Data de Fabricação</label>
+        <input class="form-control" type="text" th:field="*{dataDeFabricacao}" id="dataDeFabricacao" placeholder="Informe a data de fabricação do produto..."/>
       </div>
 
-      <div>
-        <label>Data de Validade</label>
-        <input type="text" th:field="*{validade}" id="validade" placeholder="Informe a data de validade do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Data de Validade</label>
+        <input class="form-control" type="text" th:field="*{validade}" id="validade" placeholder="Informe a data de validade do produto..."/>
       </div>
 
       <br>
 
-      <div>
-        <label>Quantidade em Estoque</label>
-        <input type="number" th:field="*{quantidadeEmEstoque}" id="quantidadeEmEstoque" placeholder="Informe a quantidade em estoque do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Quantidade em Estoque</label>
+        <input class="form-control" type="number" th:field="*{quantidadeEmEstoque}" id="quantidadeEmEstoque" placeholder="Informe a quantidade em estoque do produto..."/>
       </div>
 
-      <div>
-        <label>Quantidade Mínima em Estoque</label>
-        <input type="number" th:field="*{quantidadeMinimaParaEstoque}" id="quantidadeMinEstoque" placeholder="Informe a quantidade mínima para estoque do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Quantidade Mínima em Estoque</label>
+        <input class="form-control" type="number" th:field="*{quantidadeMinimaParaEstoque}" id="quantidadeMinEstoque" placeholder="Informe a quantidade mínima para estoque do produto..."/>
       </div>
 
-      <div>
-        <label>Quantidade Máxima em Estoque</label>
-        <input type="number" th:field="*{quantidadeMaximaParaEstoque}" id="quantidadeMaxEstoque" placeholder="Informe a quantidade máxima para estoque do produto..."/>
+      <div class="mb-3">
+        <label class="form-label">Quantidade Máxima em Estoque</label>
+        <input class="form-control" type="number" th:field="*{quantidadeMaximaParaEstoque}" id="quantidadeMaxEstoque" placeholder="Informe a quantidade máxima para estoque do produto..."/>
       </div>
 
-      <button type="submit">Editar</button>
+      <button type="submit"
+              class="btn btn-outline-primary">Editar</button>
+
+      <a th:href="@{/produto}"
+         class="btn btn-danger">Cancelar</a>
 
       <p th:text="${mensagem}"></p>
 

@@ -12,7 +12,7 @@
 
     <div layout:fragment="conteudo">
 
-        <h1>Seu estoque</h1>
+        <h1 class="mt-3 mb-5">Seu estoque</h1>
 
         <table class="table">
 
@@ -24,6 +24,7 @@
                 <th>Quantidade em Estoque</th>
                 <th>Quantidade Mínima</th>
                 <th>Quantidade Máxima</th>
+                <th></th>
                 <th></th>
             </tr>
             <tr th:each="prod:${produtos}">
@@ -37,6 +38,8 @@
                 <th>
                     <a th:href="@{/produto/editar/}+${prod.id}"
                        class="btn btn-primary">Editar</a>
+                </th>
+                <th>
                     <button th:onclick="|produtoId.value = ${prod.id}|" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                         Deletar
                     </button>
