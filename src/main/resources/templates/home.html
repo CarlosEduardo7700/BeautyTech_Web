@@ -11,7 +11,37 @@
 <body>
 
     <div layout:fragment="conteudo">
-        <h1 class="text-dark">Sistema de Gerenciamento de Produtos da BeautyTech</h1>
+
+        <h1 class="mt-3 mb-5 text-center">Bem vindo ao seu Sistema de Gerenciamento de Produtos da BeautyTech!</h1>
+
+        <h3 class="mb-4 text-muted">Seu Dashboard</h3>
+
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantidade de produtos que estão em falta no estoque</h5>
+                        <p class="display-1 text-center" th:text="${quantidadeDeProdutosEmFalta}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantidade de produtos que estão em excesso no estoque</h5>
+                        <p class="display-1 text-center" th:text="${quantidadeDeProdutosEmExcesso}"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Quantidade total de produtos em estoque</h5>
+                        <p class="display-1 text-center" th:text="${quantidadeDeProdutos}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
