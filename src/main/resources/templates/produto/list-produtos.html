@@ -36,6 +36,10 @@
                 <td th:text="${prod.quantidadeMinimaParaEstoque}"></td>
                 <td th:text="${prod.quantidadeMaximaParaEstoque}"></td>
                 <th>
+                    <a th:href="@{/produto/info/}+${prod.id}"
+                       class="btn btn-info">Detalhes</a>
+                </th>
+                <th>
                     <a th:href="@{/produto/editar/}+${prod.id}"
                        class="btn btn-primary">Editar</a>
                 </th>

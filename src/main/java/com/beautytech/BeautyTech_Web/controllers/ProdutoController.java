@@ -60,5 +60,11 @@ public class ProdutoController {
         return "redirect:/produto";
     }
 
+    @GetMapping("info/{id}")
+    public String exibirInformacoesDoProduto(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("produto", produtoRepository.getReferenceById(id));
+        return "produto/detail-produto";
+    }
+
 
 }

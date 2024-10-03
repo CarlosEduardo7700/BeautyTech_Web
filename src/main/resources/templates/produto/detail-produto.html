@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Detalhes do Produto</title>
+</head>
+<body>
+
+  <div layout:fragment="conteudo">
+
+
+    <div class="card m-5 p-5" th:object="${produto}">
+
+      <h1 class="card-title mb-4">Informações sobre o Produto</h1>
+
+      <div>
+        <h4 class="fw-bold">Nome</h4>
+        <p th:text="*{nome}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Descrição</h4>
+        <p th:text="*{descricao}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Preço</h4>
+        <p th:text="*{preco}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Data de Fabricação</h4>
+        <p th:text="*{#temporals.format(dataDeFabricacao, 'dd/MM/yyyy')}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Data de Validade</h4>
+        <p th:text="*{#temporals.format(validade, 'dd/MM/yyyy')}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Data de Cadastro no Sistema</h4>
+        <p th:text="*{#temporals.format(dataDeCadastro, 'dd/MM/yyyy')}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Quantidade em Estoque</h4>
+        <p th:text="*{quantidadeEmEstoque}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Quantidade Mínima do Estoque</h4>
+        <p th:text="*{quantidadeMinimaParaEstoque}"></p>
+      </div>
+
+      <div>
+        <h4 class="fw-bold">Quantidade Máxima do Estoque</h4>
+        <p th:text="*{quantidadeMaximaParaEstoque}"></p>
+      </div>
+
+      <div class="mt-4">
+        <a th:href="@{/produto}"
+           class="btn btn-primary">Voltar</a>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
