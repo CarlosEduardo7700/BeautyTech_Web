@@ -1,5 +1,7 @@
 package com.beautytech.BeautyTech_Web.models;
 
+import com.beautytech.BeautyTech_Web.dtos.CadastroDeProdutoDto;
+import com.beautytech.BeautyTech_Web.dtos.EdicaoDoProdutoDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -50,4 +52,28 @@ public class Produto {
 
     @Column(name = "QT_MAX_ESTOQUE", nullable = false)
     private Integer quantidadeMaximaParaEstoque;
+
+    public Produto(CadastroDeProdutoDto produto) {
+        nome = produto.nome();
+        descricao = produto.descricao();
+        preco = produto.preco();
+        dataDeFabricacao = produto.dataDeFabricacao();
+        validade = produto.validade();
+        quantidadeEmEstoque = produto.quantidadeEmEstoque();
+        quantidadeMinimaParaEstoque = produto.quantidadeMinimaParaEstoque();
+        quantidadeMaximaParaEstoque = produto.quantidadeMaximaParaEstoque();
+    }
+
+    public Produto(EdicaoDoProdutoDto produto) {
+        id = produto.id();
+        nome = produto.nome();
+        descricao = produto.descricao();
+        preco = produto.preco();
+        dataDeFabricacao = produto.dataDeFabricacao();
+        validade = produto.validade();
+        dataDeCadastro = produto.dataDeCadastro();
+        quantidadeEmEstoque = produto.quantidadeEmEstoque();
+        quantidadeMinimaParaEstoque = produto.quantidadeMinimaParaEstoque();
+        quantidadeMaximaParaEstoque = produto.quantidadeMaximaParaEstoque();
+    }
 }

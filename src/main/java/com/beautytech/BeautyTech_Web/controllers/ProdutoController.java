@@ -1,5 +1,6 @@
 package com.beautytech.BeautyTech_Web.controllers;
 
+import com.beautytech.BeautyTech_Web.dtos.*;
 import com.beautytech.BeautyTech_Web.models.Produto;
 import com.beautytech.BeautyTech_Web.repositories.ProdutoRepository;
 import jakarta.transaction.Transactional;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("produto")
@@ -18,19 +21,22 @@ public class ProdutoController {
 
     @GetMapping
     public String exibirProdutos(Model model) {
-        model.addAttribute("produtos", produtoRepository.findAll());
+        List<ListagemDosProdutosDto> produtos = produtoRepository.findAll()
+                .stream().map(ListagemDosProdutosDto::new).toList();
+        model.addAttribute("produtos", produtos);
         return "produto/list-produtos";
     }
 
     @GetMapping("cadastrar")
-    public String exibirFormularioCadastrar(Model model) {
-        model.addAttribute("produto", new Produto());
+    public String exibirFormularioCadastrar(CadastroDeProdutoDto dto, Model model) {
+        model.addAttribute("produto", dto);
         return "produto/form-cadastrar";
     }
 
     @PostMapping("cadastrar")
     @Transactional
-    public String cadastrarProduto(Produto produto, RedirectAttributes redirectAttributes) {
+    public String cadastrarProduto(CadastroDeProdutoDto dto, RedirectAttributes redirectAttributes) {
+        Produto produto = new Produto(dto);
         produtoRepository.save(produto);
         redirectAttributes.addFlashAttribute("mensagem", "Produto cadastrado!");
         return "redirect:/produto/cadastrar";
@@ -38,12 +44,14 @@ public class ProdutoController {
 
     @GetMapping("editar/{id}")
     public String exibirFormularioEditar(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("produto", produtoRepository.getReferenceById(id));
+        ProdutoDto dto = new ProdutoDto(produtoRepository.getReferenceById(id));
+        model.addAttribute("produto", dto);
         return "produto/form-editar";
     }
 
     @PostMapping("editar")
-    public String editarProduto(Produto produto, RedirectAttributes redirectAttributes){
+    public String editarProduto(EdicaoDoProdutoDto dto, RedirectAttributes redirectAttributes){
+        Produto produto = new Produto(dto);
         produtoRepository.save(produto);
         redirectAttributes.addFlashAttribute("mensagem", "O produto foi atualizado!");
         return "redirect:/produto";
@@ -59,13 +67,18 @@ public class ProdutoController {
 
     @GetMapping("info/{id}")
     public String exibirInformacoesDoProduto(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("produto", produtoRepository.getReferenceById(id));
+        DetalhesDoProdutoDto dto = new DetalhesDoProdutoDto(produtoRepository.getReferenceById(id));
+        model.addAttribute("produto", dto);
         return "produto/detail-produto";
     }
 
     @GetMapping("pesquisar-por-nome")
     public String exibirProdutosPesquisados(@RequestParam("nomePesquisa") String nomePesquisa, Model model) {
-        model.addAttribute("produtos", produtoRepository.findByNomeContainingIgnoreCase(nomePesquisa));
+
+        List<ListagemDosProdutosDto> produtos = produtoRepository.findByNomeContainingIgnoreCase(nomePesquisa)
+                .stream().map(ListagemDosProdutosDto::new).toList();
+
+        model.addAttribute("produtos", produtos);
         return "produto/list-produtos";
     }
 
