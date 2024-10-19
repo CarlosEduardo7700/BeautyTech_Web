@@ -19,46 +19,55 @@
       <div class="mb-3">
         <label class="form-label">Nome do Produto</label>
         <input class="form-control" type="text" th:field="*{nome}" id="nome" placeholder="Informe o nome do produto..."/>
+        <p th:if="${#fields.hasErrors('nome')}" class="text text-danger" th:errors="*{nome}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Descrição do Produto</label>
         <input class="form-control" type="text" th:field="*{descricao}" id="descricao" placeholder="Informe uma descrição do produto..."/>
+        <p th:if="${#fields.hasErrors('descricao')}" class="text text-danger" th:errors="*{descricao}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Preço do Produto</label>
         <input class="form-control" type="text" th:field="*{preco}" id="preco" placeholder="Informe o preço do produto..."/>
+        <p th:if="${#fields.hasErrors('preco')}" class="text text-danger" th:errors="*{preco}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Data de Fabricação</label>
         <input class="form-control" type="date" th:field="*{dataDeFabricacao}" id="dataDeFabricacao" placeholder="Informe a data de fabricação do produto..."/>
+        <p th:if="${#fields.hasErrors('dataDeFabricacao')}" class="text text-danger" th:errors="*{dataDeFabricacao}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Data de Validade</label>
         <input class="form-control" type="date" th:field="*{validade}" id="validade" placeholder="Informe a data de validade do produto..."/>
+        <p th:if="${#fields.hasErrors('validade')}" class="text text-danger" th:errors="*{validade}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Quantidade em Estoque</label>
         <input class="form-control" type="number" th:field="*{quantidadeEmEstoque}" id="quantidadeEmEstoque" placeholder="Informe a quantidade em estoque do produto..."/>
+        <p th:if="${#fields.hasErrors('quantidadeEmEstoque')}" class="text text-danger" th:errors="*{quantidadeEmEstoque}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Quantidade Mínima em Estoque</label>
         <input class="form-control" type="number" th:field="*{quantidadeMinimaParaEstoque}" id="quantidadeMinEstoque" placeholder="Informe a quantidade mínima para estoque do produto..."/>
+        <p th:if="${#fields.hasErrors('quantidadeMinimaParaEstoque')}" class="text text-danger" th:errors="*{quantidadeMinimaParaEstoque}"></p>
       </div>
 
       <div class="mb-3">
         <label class="form-label">Quantidade Máxima em Estoque</label>
         <input class="form-control" type="number" th:field="*{quantidadeMaximaParaEstoque}" id="quantidadeMaxEstoque" placeholder="Informe a quantidade máxima para estoque do produto..."/>
+        <p th:if="${#fields.hasErrors('quantidadeMaximaParaEstoque')}" class="text text-danger" th:errors="*{quantidadeMaximaParaEstoque}"></p>
       </div>
 
       <button type="submit" class="btn btn-success">Cadastrar</button>
 
-      <p th:text="${mensagem}"></p>
+      <div class="alert alert-success mt-3" th:if="!${#strings.isEmpty(mensagem)}" th:text="${mensagem}">
+      </div>
 
     </form>
 
