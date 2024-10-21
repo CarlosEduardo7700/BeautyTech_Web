@@ -55,10 +55,8 @@ public class ProdutoController {
     }
 
     @PostMapping("editar")
-    public String editarProduto(@Valid EdicaoDoProdutoDto dto, BindingResult result, RedirectAttributes redirectAttributes, Model model){
+    public String editarProduto(@Valid @ModelAttribute("produto") EdicaoDoProdutoDto dto, BindingResult result, RedirectAttributes redirectAttributes, Model model){
         if (result.hasErrors()) {
-            ProdutoDto produtoDto = new ProdutoDto(produtoRepository.getReferenceById(dto.id()));
-            model.addAttribute("produto", produtoDto);
             return "produto/form-editar";
         }
         Produto produto = new Produto(dto);

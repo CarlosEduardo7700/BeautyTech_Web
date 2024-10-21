@@ -24,6 +24,8 @@
 
         </form>
 
+        <div class="alert alert-warning mt-3" th:if="!${#strings.isEmpty(mensagem)}" th:text="${mensagem}">
+        </div>
 
         <table class="table">
 
@@ -63,7 +65,6 @@
             </tr>
 
         </table>
-        <p th:text="${mensagem}"></p>
 
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
