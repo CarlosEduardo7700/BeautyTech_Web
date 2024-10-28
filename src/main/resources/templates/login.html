@@ -12,7 +12,7 @@
 
         <h1 class="mb-3">Log-in</h1>
 
-        <form class="d-flex justify-content-center align-items-center flex-column" th:action="@{/login}" method="post">
+        <form class="d-flex justify-content-center align-items-center flex-column w-80" th:action="@{/login}" method="post">
 
             <div class="form-group">
                 <label for="email">Email</label>
@@ -25,6 +25,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary mt-3">Entrar</button>
+            <p class="mt-5">Não possui cadastro? <a href="/usuario/cadastrar">Clique aqui!</a></p>
         </form>
 
     </div>

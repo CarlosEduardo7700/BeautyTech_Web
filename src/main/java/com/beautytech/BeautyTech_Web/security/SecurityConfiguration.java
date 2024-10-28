@@ -26,21 +26,21 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/public/**", "/login", "/webjars/**", "/css/**").permitAll()
-                        .requestMatchers("/admin/**", "/produto/cadastrar").hasRole("ADMIN") // Restringe o acesso para ADMIN
-                        .requestMatchers("/user/**").hasRole("USER") // Restringe o acesso para USER
+                        .requestMatchers("/public/**", "/login", "/webjars/**", "/css/**", "/usuario/cadastrar").permitAll()
+                        .requestMatchers("/admin/**", "/produto/cadastrar").hasRole("ADMIN")
+                        .requestMatchers("/user/**").hasRole("USER")
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login") // Página de login personalizada
+                        .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .usernameParameter("email") // Mapeia o campo "email" para o usuário
+                        .usernameParameter("email")
                         .passwordParameter("senha")
-                        .defaultSuccessUrl("/home") // Página de redirecionamento após sucesso no login
+                        .defaultSuccessUrl("/")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout") // Redirecionamento após logout
+                        .logoutSuccessUrl("/login?logout")
                 );
         return http.build();
     }

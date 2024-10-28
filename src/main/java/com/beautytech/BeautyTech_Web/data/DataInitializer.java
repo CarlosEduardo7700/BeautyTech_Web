@@ -18,29 +18,29 @@
 //    CommandLineRunner initDatabase(UsuarioRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
 //        return args -> {
 //            Role adminRole = new Role();
-//            adminRole.setNome("ADMIN");
-//            adminRole.setLabel("Admin");
+//            adminRole.setNome("ROLE_ADMIN");
+//            adminRole.setLabel("Administrador");
 //            roleRepository.save(adminRole);
 //
 //            Role userRole = new Role();
-//            userRole.setNome("USER");
-//            userRole.setLabel("User");
+//            userRole.setNome("ROLE_USER");
+//            userRole.setLabel("Usuário");
 //            roleRepository.save(userRole);
 //
 //            Usuario admin = new Usuario();
-//            admin.setNome("admin");
-//            admin.setCpf("1234567891");
+//            admin.setNome("Rodolfo Santos");
+//            admin.setCpf("1234567890");
 //            admin.setDataDeNascimento(LocalDate.now());
-//            admin.setEmail("admin@email");
+//            admin.setEmail("rodolfo@email.com");
 //            admin.setSenha(passwordEncoder.encode("admin"));
 //            admin.setRoles(Set.of(adminRole));
 //            userRepository.save(admin);
 //
 //            Usuario user = new Usuario();
-//            user.setNome("user");
-//            user.setCpf("1234567892");
+//            user.setNome("Lucas Augusto");
+//            user.setCpf("1234567891");
 //            user.setDataDeNascimento(LocalDate.now());
-//            user.setEmail("user@email");
+//            user.setEmail("lucas@email.com");
 //            user.setSenha(passwordEncoder.encode("user"));
 //            user.setRoles(Set.of(userRole));
 //            userRepository.save(user);
