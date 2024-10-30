@@ -1,5 +1,6 @@
 package com.beautytech.BeautyTech_Web.services;
 
+import com.beautytech.BeautyTech_Web.dtos.usuario.CadastroDeUsuarioDto;
 import com.beautytech.BeautyTech_Web.models.Role;
 import com.beautytech.BeautyTech_Web.models.Usuario;
 import com.beautytech.BeautyTech_Web.repositories.RoleRepository;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -45,13 +47,17 @@ public class UsuarioService implements UserDetailsService {
         );
     }
 
-    public void saveUser(String email, String senha, List<String> roles){
+    public void saveUser(CadastroDeUsuarioDto dto, PasswordEncoder passwordEncoder){
         Usuario usuario = new Usuario();
-        usuario.setEmail(email);
-        usuario.setSenha(senha);
+
+        usuario.setNome(dto.nome());
+        usuario.setEmail(dto.email());
+        usuario.setSenha(passwordEncoder.encode(dto.senha()));
+        usuario.setCpf(dto.cpf());
+        usuario.setDataDeNascimento(dto.dataDeNascimento());
 
         HashSet<Role> rolesDoUsuario = new HashSet<>();
-        for (String nomeDaRole : roles) {
+        for (String nomeDaRole : dto.roles()) {
             Role role = roleRepository.findByNome(nomeDaRole);
             if (role != null) {
                 rolesDoUsuario.add(role);

@@ -34,7 +34,7 @@ public class UsuarioController {
 
     @PostMapping("cadastrar")
     public String cadastrarUsuario(@ModelAttribute("usuario") CadastroDeUsuarioDto dto) {
-        usuarioService.saveUser(dto.email(), passwordEncoder.encode(dto.senha()), dto.roles());
+        usuarioService.saveUser(dto, passwordEncoder);
         return "redirect:/login";
     }
 }
