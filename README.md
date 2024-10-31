@@ -9,3 +9,7 @@
 ## Arquitetura
 
 ![Diagrama de arquitetura do projeto BeautyTech WEB](./beautytechweb_architecture.png)
+
+## Vídeo Apresentação
+
+https://youtu.be/EG1vGsRShNI?si=HhXsr3x4RLwzvT9B
