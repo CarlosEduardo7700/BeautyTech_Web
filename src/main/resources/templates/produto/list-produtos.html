@@ -2,7 +2,7 @@
 <html lang="pt-br"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout}">
+      layout:decorate="~{layout}" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
     <meta charset="UTF-8">
@@ -39,7 +39,7 @@
                 <th>Quantidade Máxima</th>
                 <th></th>
                 <th></th>
-                <th></th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
             </tr>
             <tr th:each="prod:${produtos}">
                 <td th:text="${prod.nome}"></td>
@@ -57,7 +57,7 @@
                     <a th:href="@{/produto/editar/}+${prod.id}"
                        class="btn btn-primary">Editar</a>
                 </th>
-                <th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">
                     <button th:onclick="|produtoId.value = ${prod.id}|" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                         Deletar
                     </button>

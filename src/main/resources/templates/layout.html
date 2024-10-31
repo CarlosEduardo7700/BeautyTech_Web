@@ -20,7 +20,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-link" th:href="@{/produto}">Seu Estoque</a>
-                    <a class="nav-link" th:href="@{/produto/cadastrar}">Cadastro de Produtos</a>
+                    <a class="nav-link" th:href="@{/produto/cadastrar}" sec:authorize="hasRole('ROLE_ADMIN')">Cadastro de Produtos</a>
                 </div>
             </div>
             <ul class="navbar-nav">
