@@ -13,3 +13,8 @@
 ## Vídeo Apresentação
 
 https://youtu.be/EG1vGsRShNI?si=HhXsr3x4RLwzvT9B
+
+## Instruções de Testes
+
+1. No arquivo application.properties (src/main/resources/application.properties) informe as credenciais do seu banco de dados.
+2. Na primeira vez em que rodar a aplicação, descomente todo o código do arquivo DataInitializer.java (src/main/java/com/beautytech/BeautyTech_Web/data/DataInitializer.java), para popular seu banco com alguns dados pré-definidos.
