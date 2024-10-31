@@ -3,10 +3,12 @@ package com.beautytech.BeautyTech_Web.controllers;
 import com.beautytech.BeautyTech_Web.dtos.usuario.CadastroDeUsuarioDto;
 import com.beautytech.BeautyTech_Web.repositories.RoleRepository;
 import com.beautytech.BeautyTech_Web.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,7 +35,11 @@ public class UsuarioController {
     }
 
     @PostMapping("cadastrar")
-    public String cadastrarUsuario(@ModelAttribute("usuario") CadastroDeUsuarioDto dto) {
+    public String cadastrarUsuario(@Valid @ModelAttribute("usuario") CadastroDeUsuarioDto dto, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("roles", roleRepository.findAll());
+            return "usuario/form-cadastrar";
+        }
         usuarioService.saveUser(dto, passwordEncoder);
         return "redirect:/login";
     }

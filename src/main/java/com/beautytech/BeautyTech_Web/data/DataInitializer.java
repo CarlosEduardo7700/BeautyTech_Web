@@ -30,18 +30,18 @@
 //            Usuario admin = new Usuario();
 //            admin.setNome("Rodolfo Santos");
 //            admin.setCpf("1234567890");
-//            admin.setDataDeNascimento(LocalDate.now());
+//            admin.setDataDeNascimento(LocalDate.now().minusYears(20));
 //            admin.setEmail("rodolfo@email.com");
-//            admin.setSenha(passwordEncoder.encode("admin"));
+//            admin.setSenha(passwordEncoder.encode("Admin@123"));
 //            admin.setRoles(Set.of(adminRole));
 //            userRepository.save(admin);
 //
 //            Usuario user = new Usuario();
 //            user.setNome("Lucas Augusto");
 //            user.setCpf("1234567891");
-//            user.setDataDeNascimento(LocalDate.now());
+//            user.setDataDeNascimento(LocalDate.now().minusYears(20));
 //            user.setEmail("lucas@email.com");
-//            user.setSenha(passwordEncoder.encode("user"));
+//            user.setSenha(passwordEncoder.encode("User@123"));
 //            user.setRoles(Set.of(userRole));
 //            userRepository.save(user);
 //        };
